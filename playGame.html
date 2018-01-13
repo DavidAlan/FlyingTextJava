@@ -1,0 +1,240 @@
+<!--
+//  Catch Flying Text program
+//  Copyright (c) 2017 David A. Freitag 
+//  http://software.dafreitag.com/
+//
+//  This program is free software: you can redistribute it and/or modify 
+//  it under the terms of the GNU General Public License as published by 
+//  the Free Software Foundation, either version 3 of the License, or 
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful, 
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+//  GNU General Public License for more details.
+//
+//  To receive a copy of the GNU General Public License, see
+//  <https://www.gnu.org/licenses/>.
+-->
+<!doctype html>
+<meta charset="utf-8">
+<title id="tabTitle">TBD</title>
+<link rel="stylesheet" href="./js/flyingText.css">
+
+<section id="game">
+    <div id="modeAndLevels" class="modeAndLevels"></div>
+    <h1 id="gameLevelText">TBD</h1>
+    <div id="stage">
+        <canvas width="1200" height="600" style="border: 1px solid black"></canvas>
+        
+        <div id="overlay1">
+            <div id="overlayTextResult" class="overlayTextResult">TBD</div> 
+        </div>
+        
+        <div class="popup" onclick="showPopUpWindow()"> 
+            <span id="myPopup" class="popuptext">tbd</span>
+        </div>
+        
+        <p><p><p>
+            
+        <button id="pauseButton">Begin</button> 
+        &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Correct:  
+        
+        &nbsp;&nbsp;&nbsp;
+        
+        <span id="playerPlusScore" style="font-weight:normal;color:yellow"></span>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Incorrect:
+        
+        &nbsp;&nbsp;&nbsp;
+        <span id="playerMinusScore" style="font-weight:normal;color:yellow"></span>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Equals:
+        &nbsp;&nbsp;&nbsp;
+        <span id="playerLevelScore" style="font-weight:normal;color:yellow"></span>
+        &nbsp;&nbsp;&nbsp;
+        / 
+        <span id="playerOutOfScore" style="font-weight:normal;color:yellow"></span>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Adjusted Total Points:
+        &nbsp;&nbsp;&nbsp;
+        <span id="playerTotalScore" style="font-weight:normal;color:yellow"></span>
+        
+        <p class="flyingObjectArea"  id="flyingObjectArea"></p>
+    </div>
+</section>
+
+<section id="completed_game">
+    <h1 id="completedHeader">Catch the Flying Text!</h1>
+    <div id="completed_stage">
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel1" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_0" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel2" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_1" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel3" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_2" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel4" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_3" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel5" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_4" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel6" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_5" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel7" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_6" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel8" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_7" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel9" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_8" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel10" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_9" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel11" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_10" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel12" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_11" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel13" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_12" style="font-weight:normal;color:yellow"></span>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="textLevel14" style="font-weight:normal;color:yellow"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_13" style="font-weight:normal;color:yellow"></span>
+
+        <p><p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="pausesNbr" style="font-weight:normal;color:aqua"></span>
+        &nbsp;&nbsp;
+        <span id="totalPauses" style="font-weight:normal;color:orange"></span>
+        
+        <p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="adjustedText1" style="font-weight:normal;color:orange"></span>
+            &nbsp;&nbsp;&nbsp;
+        <span id="scoresLevel_total" style="font-weight:normal;color:aqua"></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        <span id="adjustedText2" style="font-weight:normal;color:orange"></span>
+    </div>
+    <p>
+    <button id="beginButton">Begin</button> 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span id="beginLevelText" style="font-weight:normal;color:orange"></span>
+    <select id="beginLevel">
+        <option id="beginLevel1" >tbd</option>
+        <option id="beginLevel2" >tbd</option>
+        <option id="beginLevel3" >tbd</option>
+        <option id="beginLevel4" >tbd</option>
+        <option id="beginLevel5" >tbd</option>
+        <option id="beginLevel6" >tbd</option>
+        <option id="beginLevel7" >tbd</option>
+        <option id="beginLevel8" >tbd</option>
+        <option id="beginLevel9" >tbd</option>
+        <option id="beginLevel10" >tbd</option>
+        <option id="beginLevel11" >tbd</option>
+        <option id="beginLevel12" >tbd</option>
+        <option id="beginLevel13" >tbd</option>
+        <option id="beginLevel14" >tbd</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span id="endLevelText" style="font-weight:normal;color:orange"></span>
+    <select id="endLevel">
+        <option id="endLevel1" >tbd</option>
+        <option id="endLevel2" >tbd</option>
+        <option id="endLevel3" >tbd</option>
+        <option id="endLevel4" >tbd</option>
+        <option id="endLevel5" >tbd</option>
+        <option id="endLevel6" >tbd</option>
+        <option id="endLevel7" >tbd</option>
+        <option id="endLevel8" >tbd</option>
+        <option id="endLevel9" >tbd</option>
+        <option id="endLevel10" >tbd</option>
+        <option id="endLevel11" >tbd</option>
+        <option id="endLevel12" >tbd</option>
+        <option id="endLevel13" >tbd</option>
+        <option id="endLevel14" >tbd</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span id="modeTypes">
+        <input type="Radio" id="mode1" Name="mode" Value="Mode1">&nbsp;&nbsp;Quick
+        &nbsp;&nbsp;&nbsp;
+        <input type="Radio" id="mode2" Name="mode" Value="Mode2" checked>&nbsp;&nbsp;Regular
+        &nbsp;&nbsp;&nbsp;
+        <input type="Radio" id="mode3" Name="mode" Value="Mode3">&nbsp;&nbsp;Sudden Death
+    </span>
+    
+    <div id="overlay">
+        <div id="overlayText">TBD</div> 
+    </div>
+</section>
+
+<script src="./js/ftGlobals.js"></script>
+<script src="./js/buttons.js"></script>
+<script src="./js/textOverlay.js"></script>
+<script src="./js/textOverlayResult.js"></script>
+<script src="./js/popUpText.js"></script>
+
+<script src="./data/level_1.js"></script>
+<script src="./data/level_2.js"></script>
+<script src="./data/level_3.js"></script>
+<script src="./data/level_4.js"></script>
+<script src="./data/level_5.js"></script>
+<script src="./data/level_6.js"></script>
+<script src="./data/level_7.js"></script>
+<script src="./data/level_8.js"></script>
+<script src="./data/level_9.js"></script>
+<script src="./data/level_10.js"></script>
+<script src="./data/level_11.js"></script>
+<script src="./data/level_12.js"></script>
+<script src="./data/level_13.js"></script>
+<script src="./data/level_14.js"></script>
+
+<script src="./js/introScreen.js"></script>
+<script src="./js/main.js"></script>
+
+<script src="./js/flyingObjects.js"></script>  
+
+<script>
+completed_game.style.display="block"; 
+game.style.display="none"; 
+
+displayIntroScreen();
+</script>
+</body>
